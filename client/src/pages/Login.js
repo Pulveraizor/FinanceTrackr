@@ -1,10 +1,10 @@
-function Logo() {
+export function Logo() {
     return (
         <img className="rounded-circle" src="finlogo.jpg" alt="logo"></img>
     )
 }
 
-function InputUsername() {
+export function InputUsername() {
     return (
         <div className="row input-group has-validation mt-3 mx-0">
             <div className="px-0">
@@ -31,7 +31,7 @@ function InputPassword() {
     )
 }
 
-function SubmitBtn() {
+export function SubmitBtn() {
     return <button type="submit" className="text-light btn bg-main-dark-blue mt-5">Login</button>
 }
 
@@ -46,6 +46,9 @@ function LoginForm() {
                     <InputUsername />
                     <InputPassword />
                     <SubmitBtn />
+                    <div className="text-light mt-3">
+                        <p>Don't have an account? <a className="text-light" href="/login">Register</a></p>
+                    </div>
                 </>
             </div>
         </form>
