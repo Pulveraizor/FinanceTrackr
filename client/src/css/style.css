@@ -9,7 +9,6 @@ body, html {
 margin: 0;
 padding: 0;
 height: 100%;
-overflow: hidden;
 }
 
 .bg-main-grad {
@@ -18,30 +17,3 @@ overflow: hidden;
 .bg-main-dark-blue {
     background-color: var(--dark-blue);
 }
-  
-  /* Style the logo element */
-  .logo {
-    /* Center the logo */
-    margin: auto;
-    width: 300px;
-    height: 300px;
-  
-    /* Add some padding and a white border */
-    padding: 20px;
-    border: 10px solid var(--white);
-  
-    /* Use a radial gradient for the circle */
-    background: radial-gradient(circle, var(--white), var(--medium-blue));
-  }
-  
-  /* Style the logo text element */
-  .logo-text {
-    /* Use the same font as the logo */
-    font-family: "Roboto", sans-serif;
-    font-size: 36px;
-    font-weight: bold;
-    text-align: center;
-  
-    /* Use white color for the text */
-    color: var(--white);
-  }
