@@ -12,7 +12,7 @@ height: 100%;
 }
 
 .bg-main-grad {
-    background: linear-gradient(to bottom right, var(--dark-blue), var(--light-blue));
+    background: linear-gradient(to bottom right, var(--dark-blue), var(--medium-blue) 100%);
 }
 .bg-main-dark-blue {
     background-color: var(--dark-blue);
