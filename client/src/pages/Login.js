@@ -1,4 +1,4 @@
-function Logo() {
+export function Logo() {
     return (
         <img className="rounded-circle" src="finlogo.jpg" alt="logo"></img>
     )

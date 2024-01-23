@@ -2,14 +2,21 @@ const express = require('express');
 const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-var session = require("express-session");
-
-
+const session = require("express-session");
+const db = require("./db/mysql");
+const UsersRouter = require("./routes/UsersRouter");
 const app = express();
 const port = process.env.PORT || 5000;
 
+app.use(function (req, res, next) {
+  req.db = db;
+  next();
+});
+
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(express.static(path.join(__dirname, 'client/public')));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(
   session({
@@ -23,11 +30,10 @@ app.use(
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
-// let indexRouter = require("./routes/index");
-// app.use("/", indexRouter);
 
-let UsersRouter = require("./routes/UsersRouter");
-app.use("/", UsersRouter);
+
+app.use("/users", UsersRouter);
+// app.use('/dash', require('./routes/DashboardRouter'));
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

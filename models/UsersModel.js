@@ -1,5 +1,7 @@
 module.exports = {
     createUser: async function (db, data) {
+      console.log('Inside the model: ');
+      console.log(data);
         const q = `INSERT INTO users (username, password) VALUES (?, ?)`;
         const [result] = await db.query(q, [data.username, data.password]);
         if (result) {
