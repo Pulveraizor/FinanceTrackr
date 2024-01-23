@@ -3,12 +3,29 @@ import ReactDOM from "react-dom/client";
 import "./css/style.css";
 import LoginForm from "./pages/Login";
 import reportWebVitals from "./reportWebVitals";
-// import RegisterForm from "./pages/Register";
+import RegisterForm from "./pages/Register";
+
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Route,
+} from "react-router-dom";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="/login" element={<LoginForm />}></Route>
+      <Route path="/register" element={<RegisterForm />} />
+      {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+    </>
+  )
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <LoginForm />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

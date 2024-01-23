@@ -15,7 +15,7 @@ export function CreateUsername() {
 }
 function CreatePassword() {
     return (
-        <div className="row input-group has-validation mt-3 mx-0">
+        <div className="row input-group has-validation mt-5 mx-0">
             <div className="px-0">
                 <label htmlFor="password" className="text-light form-label">Create Password:</label>
                 <input type="password" id="password" name="password" className="form-control" required></input>
