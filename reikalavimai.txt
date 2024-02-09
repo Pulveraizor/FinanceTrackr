@@ -1,0 +1,26 @@
+Projekto aprašymas: Sukurti internetinę finansų sekimo programėlę, kuri leis vartotojams sekti savo pajamas ir išlaidas, įskaitant pajamų ir išlaidų grupavimą.
+
+Reikalavimai: Naudoti MERN ar panašų ir sau patogų stacką. Gali būti ar react, ar vue, ar angular front-endui. Gali būti ar mysql, ar mongodb duombazei. Pasirinkimas laisvas, bet liekame kuo arčiau Javascript įrankių.
+
+Užduoties tikslai:
+
+Vartotojo sąsaja (Front-end):
+Sukurti vartotojo sąsają naudojant sau patogių/-ius Javascript įrankius.
+Sukurti vartotojo profilį - registracijos, prisijungimo, slaptažodžio atgavimo funkcijos.
+Sukurti pagrindinį skydelį su balanso rodikliu, pajamų ir išlaidų sąrašais.
+Grupių įvedimo forma su galimybe įvesti pavadinimą.
+Pajamų įvedimo forma su galimybe įvesti pajamų sumą ir grupę.
+Išlaidų įvedimo forma su galimybe įvesti išlaidų sumą ir grupę.
+Pajamų ir išlaidų sąrašų puslapiai. Turi būti tvarkingai atvaizduojami ir turi būti filtruojami pagal laikotarpį.
+Serverio pusė (Back-end):
+Sukurti serverį naudojant sau patogių/-ius Javascript įrankius.
+Duomenys turi būti saugomi duomenų bazėje (MongoDB) ir valdomi per API.
+Dokumentacija:
+Paruošti programos dokumentaciją, kuri apima instrukcijas dėl diegimo, naudojimo ir palaikymo ar tolimesnio programos tobulinimo.
+Vertinimas:
+
+Nuoseklumas. T.y. kokie darbo tempo šuoliai pagal github istoriją.
+Projekto paleidimas. Jeigu nesinaudosite nemokamomis hostingo paslaugomis, tai tada kiek stipriau bus vertinama ar lengvai pavyks projektą pasileisti ant savo kompiuterio.
+Dizainas. Ar įmanoma naudotis produktu telefone ir kompiuteryje.
+Funkcionalumas. Bazinių funkcijų veikimas: grupės, pajamos/išlaidos, vartotojo registracija.
+Kodo tvarkingumas. Ar tvarkinga projekto failų struktūra, ar nėra pilna visur pasikartojančio kodo, ar pats kodas iš savęs tvarkingas ir jį eina suprasti, kiek taupiai naudojami kompiuterio resursai.
