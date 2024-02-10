@@ -17,3 +17,7 @@ height: 100%;
 .bg-main-dark-blue {
     background-color: var(--dark-blue);
 }
+.btn-main-dark-blue {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
