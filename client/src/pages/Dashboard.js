@@ -4,23 +4,56 @@ let transactions_list = [
     {
         id: 1,
         merchant: "Circle-K",
-        amount: -12.96,
+        amount: 12.96,
+        group: "Transportation",
+        deposit: false,
         status: "Complete",
         date: "2024-02-10"
     },
     {
         id: 2,
         merchant: "Maxima LT",
-        amount: -34.52,
+        amount: 34.52,
+        group: "Groceries",
+        deposit: false,
         status: "Pending",
         date: "2024-02-05"
     },
     {
         id: 3,
         merchant: "Rory Pub",
-        amount: -7.80,
+        amount: 7.80,
+        group: "Restaurants",
+        deposit: false,
         status: "Complete",
         date: "2024-02-07"
+    },
+    {
+        id: 4,
+        merchant: "Starbucks",
+        amount: 9.99,
+        group: "Groceries",
+        deposit: false,
+        status: "Pending",
+        date: "2024-01-30"
+    },
+    {
+        id: 5,
+        merchant: "AB Klaipedos Juru Muziejus",
+        amount: 15.00,
+        group: "Groceries",
+        deposit: false,
+        status: "Pending",
+        date: "2024-01-30"
+    },
+    {
+        id: 6,
+        merchant: "ATM Deposit",
+        amount: 50.00,
+        group: "Groceries",
+        deposit: true,
+        status: "Complete",
+        date: "2024-01-30"
     }
 ]
 
@@ -42,7 +75,7 @@ function RecentTransaction({transaction}) {
         <a href="/#" className="list-group-item list-group-item-action" aria-current="true">
             <div className="d-flex w-100 justify-content-between">
                 <h5 className="mb-1">{transaction.merchant}</h5>
-                <span>{transaction.amount} EUR</span>
+                <span>{transaction.deposit ? "+" : "-"}{transaction.amount} EUR</span>
             </div>
             <p className="mb-1">{transaction.status}</p>
             <small>{transaction.date}</small>
