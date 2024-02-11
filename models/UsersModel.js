@@ -12,6 +12,5 @@ module.exports = {
     },
     getUserById: async function (db) {
         const q = `SELECT * FROM users WHERE id = ?`;
-
     }
 }
