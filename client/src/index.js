@@ -5,6 +5,7 @@ import LoginForm from "./pages/Login";
 import reportWebVitals from "./reportWebVitals";
 import RegisterForm from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
+import AllTransactions from "./pages/AllTransactions";
 
 import {
   createBrowserRouter,
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
       <Route path="/login" element={<LoginForm />}></Route>
       <Route path="/register" element={<RegisterForm />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/transactions" element={<AllTransactions />} />
     </>
   )
 );

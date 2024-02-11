@@ -1,5 +1,6 @@
-let current_balance = 1024.53;
-let current_user = "Benas";
+import { GeneralInfo } from "./Dashboard";
+import { SingleTransaction } from "./Dashboard";
+
 let transactions_list = [
     {
         id: 1,
@@ -57,36 +58,18 @@ let transactions_list = [
     }
 ]
 
-export function GeneralInfo ({ balance, username }) {
-    return (
-        <div className="text-center card mt-3">
-            <div className="card-body">
-                <h3>Hello {username}</h3>
-                <div><small>Current balance:</small></div>
-                <h1>{balance} EUR</h1>
-            </div>
-            <div className="card-footer btn btn-main-dark-blue">Track your expenses</div>
+function FilterOptions () {
+    return(
+        <div className="card mt-4">
+            <p className="text-center card-header">Filter Options</p>
         </div>
     )
 }
 
-export function SingleTransaction({transaction}) {
-    return (
-        <a href="/#" className="list-group-item list-group-item-action" aria-current="true">
-            <div className="d-flex w-100 justify-content-between">
-                <h5 className="mb-1">{transaction.merchant}</h5>
-                <span>{transaction.deposit ? "+" : "-"}{transaction.amount} EUR</span>
-            </div>
-            <p className="mb-1">{transaction.status}</p>
-            <small>{transaction.date}</small>
-        </a>   
-    )
-}
-
-function RecentTransactionsList() {
+function TransactionsList() {
     return (
         <div className="list-group card mt-4">
-            <p className="text-center card-header">Recent transactions:</p>
+            <p className="text-center card-header">All Transactions</p>
 
             {transactions_list.map((transaction) => (
                 <SingleTransaction 
@@ -98,18 +81,14 @@ function RecentTransactionsList() {
     )
 }
 
-
-function Dashboard() {
-    return (
-        <div className="container text-light card bg-transparent">
-            <GeneralInfo 
-                balance={current_balance}
-                username={current_user}
-            />
-            <RecentTransactionsList/>
+function AllTransactions() {
+    return(
+        <div>
+            <GeneralInfo/>
+            <FilterOptions/>
+            <TransactionsList/>
         </div>
     )
 }
 
-
-export default Dashboard;
+export default AllTransactions;
