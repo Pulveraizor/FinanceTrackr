@@ -1,5 +1,20 @@
 import { Logo } from "./Login";
 
+
+export function EnterEmail() {
+    return(
+        <div className="row input-group has-validation mt-3 mx-0">
+            <div className="px-0">
+                <label htmlFor="email" className="text-light form-label">Enter Email Address:</label>
+                <input type="email" id="email" name="email" className="form-control" required></input>
+            </div>
+            <div className="invalid-feedback col-12">
+                Please enter a valid email address
+            </div>
+        </div>
+    )
+}
+
 export function CreateUsername() {
     return (
         <div className="row input-group has-validation mt-3 mx-0">
@@ -40,6 +55,7 @@ function RegisterForm() {
             <div className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 col-xxl-3 card bg-transparent border-0 p-5">
                 <>
                     <Logo />
+                    <EnterEmail/>
                     <CreateUsername />
                     <CreatePassword />
                     <RegisterBtn />
