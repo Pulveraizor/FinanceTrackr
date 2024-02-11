@@ -5,11 +5,11 @@ module.exports = {
         console.log('Inside User controller: ');
         console.log(req.body);
 
-        let {username, password, password_repeat} = req.body;
+        let {email, username, password, password_repeat} = req.body;
         
         try {
-            const result = await UsersModel.createUser(req.db, {username, password});
-            // res.redirect('/dash');
+            const result = await UsersModel.createUser(req.db, {email, username, password});
+            res.redirect('/dashboard');
             console.log('Success');
         } catch (err) {
             console.log(err);

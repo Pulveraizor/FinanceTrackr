@@ -1,62 +1,6 @@
 import { GeneralInfo } from "./Dashboard";
 import { SingleTransaction } from "./Dashboard";
-
-let transactions_list = [
-    {
-        id: 1,
-        merchant: "Circle-K",
-        amount: 12.96,
-        group: "Transportation",
-        deposit: false,
-        status: "Complete",
-        date: "2024-02-10"
-    },
-    {
-        id: 2,
-        merchant: "Maxima LT",
-        amount: 34.52,
-        group: "Groceries",
-        deposit: false,
-        status: "Pending",
-        date: "2024-02-05"
-    },
-    {
-        id: 3,
-        merchant: "Rory Pub",
-        amount: 7.80,
-        group: "Restaurants",
-        deposit: false,
-        status: "Complete",
-        date: "2024-02-07"
-    },
-    {
-        id: 4,
-        merchant: "Starbucks",
-        amount: 9.99,
-        group: "Groceries",
-        deposit: false,
-        status: "Pending",
-        date: "2024-01-30"
-    },
-    {
-        id: 5,
-        merchant: "AB Klaipedos Juru Muziejus",
-        amount: 15.00,
-        group: "Groceries",
-        deposit: false,
-        status: "Pending",
-        date: "2024-01-30"
-    },
-    {
-        id: 6,
-        merchant: "ATM Deposit",
-        amount: 50.00,
-        group: "Groceries",
-        deposit: true,
-        status: "Complete",
-        date: "2024-01-30"
-    }
-]
+import React, { useState, useEffect } from 'react';
 
 function FilterOptions () {
     return(
@@ -64,12 +8,12 @@ function FilterOptions () {
             <button className="btn btn-main-dark-blue" type="button" data-bs-toggle="offcanvas" data-bs-target="#filter_options" aria-controls="filter_options">Filter Options</button>
 
 
-            <div class="offcanvas offcanvas-bottom" tabindex="-1" id="filter_options" aria-labelledby="offcanvasBottomLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Filter transactions:</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <div className="offcanvas offcanvas-bottom" tabIndex="-1" id="filter_options" aria-labelledby="offcanvasBottomLabel">
+                <div className="offcanvas-header">
+                    <h5 className="offcanvas-title" id="offcanvasBottomLabel">Filter transactions:</h5>
+                    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="offcanvas-body small">
+                <div className="offcanvas-body small">
                     
                 </div>
             </div>
@@ -79,27 +23,54 @@ function FilterOptions () {
     )
 }
 
-function TransactionsList() {
+function TransactionsList({data}) {
+
+    if (!Array.isArray(data) || data.length === 0) {
+        // If data is not an array or is empty, return a message indicating that no data is available
+        return <p>No data available</p>;
+    }
     return (
         <div className="list-group card mt-4">
             <p className="text-center card-header">All Transactions</p>
 
-            {transactions_list.map((transaction) => (
+            {data.map((transaction) => (
                 <SingleTransaction 
-                key={transaction.id}
-                transaction={transaction} />
-            ))}
+                    key={transaction.id}
+                    transaction={transaction} />
+                ))}
 
         </div>
     )
 }
 
 function AllTransactions() {
+
+    const [data, setData] = useState([]);
+
+  // Make the API request when the component mounts
+    useEffect(() => {
+        const fetchData = async () => {
+        try {
+            const response = await fetch('http://localhost:5000/api/transactions'); // replace '/api/data' with your API endpoint
+            if (!response.ok) {
+            throw new Error('Network response was not ok');
+            }
+            const jsonData = await response.json(); // Parse response as JSON
+            setData(jsonData); 
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+        };
+
+        fetchData();
+    }, []);
     return(
         <div className="container text-light card bg-transparent">
             <GeneralInfo/>
             <FilterOptions/>
-            <TransactionsList/>
+            <TransactionsList
+                data={data}
+            />
         </div>
     )
 }
