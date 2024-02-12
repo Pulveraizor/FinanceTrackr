@@ -17,12 +17,13 @@ module.exports = {
             return false;
         }
     },
-    depositTransaction: async function (db,data) {
+    depositTransaction: async function (db, data) {
         const q = `INSERT INTO transactions 
                 (user_id, merchant_name, merchant_group, deposit, amount) 
-                VALUES (?, ?, ?, ?, ?)`;
+                VALUES (1, 'Testname', 'ATM', true, ?)`;
 
-        const [result] = await db.query(q, data);
+        console.log(data);
+        const [result] = await db.query(q, data.amount);
         if (result) {
             return result.insertId;
         } else {

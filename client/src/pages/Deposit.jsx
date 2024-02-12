@@ -2,7 +2,7 @@
 
 function DepositForm() {
     return (
-        <div>
+        <div className="container">
             <form action="http://localhost:5000/api/transactions/deposit" method="post">
                 <div className="card-body">
                     <div className="row input-group has-validation mt-3 mx-0">

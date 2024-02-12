@@ -15,17 +15,18 @@ app.use(function (req, res, next) {
 });
 
 
-app.use('/api', TransactionsRouter);
+
 
 if (process.env.NODE_ENV === 'development') {
-  app.use(express.static(path.join(__dirname, '../react-app/build')));
+  app.use(express.static(path.join(__dirname, 'client/build')));
 }
 app.use(express.static(path.join(__dirname, 'client/build')));
 // app.use(express.static(path.join(__dirname, 'client/public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
+app.use("/api", TransactionsRouter);
+app.use("/users", UsersRouter);
 
 app.use(
   session({
@@ -41,7 +42,6 @@ app.get('*', (req, res) => {
 });
 
 
-app.use("/users", UsersRouter);
 // app.use('/dash', require('./routes/DashboardRouter'));
 
 app.listen(port, () => {

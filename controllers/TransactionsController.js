@@ -18,12 +18,14 @@ module.exports = {
         }
     },
     depositTransaction: async function (req, res) {
-        console.log(req.body);
-        // const result = await TransactionsModel.depositTransaction(req.db, req.body);
-        // if (result) {
-        //     return result.insertId;
-        // } else {
-        //     return false;
-        // }
+        try {
+            let {amount} = req.body;
+            const result = await TransactionsModel.depositTransaction(req.db, {amount});
+            res.redirect('/dashboard');
+            console.log('Success');
+        } catch (err) {
+            console.log(err);
+        }
+
     }
 }

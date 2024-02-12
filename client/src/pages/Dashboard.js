@@ -10,7 +10,7 @@ export function GeneralInfo ({ balance, username }) {
                 <h3>Hello {username}</h3>
                 <div><small>Current balance:</small></div>
                 <div className="d-flex justify-content-center align-items-center">
-                    <span className="btn btn-main-dark-blue mx-2">+</span>
+                    <a className="btn btn-main-dark-blue mx-2" href="/deposit">+</a>
                     <h1>{balance} EUR</h1>
                 </div>
             </div>

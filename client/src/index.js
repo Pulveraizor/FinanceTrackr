@@ -13,12 +13,14 @@ import {
   createRoutesFromElements,
   RouterProvider,
   Route,
+  Navigate
 } from "react-router-dom";
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
+      <Route path="/" element={<Navigate to="/dashboard" />} />
       <Route path="/login" element={<LoginForm />}></Route>
       <Route path="/register" element={<RegisterForm />} />
       <Route path="/dashboard" element={<Dashboard />} />
