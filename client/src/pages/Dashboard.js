@@ -32,7 +32,10 @@ export function SingleTransaction({transaction}) {
 function RecentTransactionsList({data}) {
     return (
         <div className="list-group card mt-4">
-            <p className="text-center card-header">Recent transactions:</p>
+            <div className="row text-center card-header justify-content-between">
+                <div className="col-4">Recent transactions:</div>
+                <div className="col-5"><a className="btn btn-main-dark-blue" href="/transactions">View all transactions</a></div>
+            </div>
 
             {data.map((transaction) => (
                 <SingleTransaction 
@@ -49,15 +52,14 @@ function Dashboard() {
 
     const [data, setData] = useState([]);
 
-  // Make the API request when the component mounts
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/transactions/recent'); // replace '/api/data' with your API endpoint
+            const response = await fetch('http://localhost:5000/api/transactions/recent');
             if (!response.ok) {
             throw new Error('Network response was not ok');
             }
-            const jsonData = await response.json(); // Parse response as JSON
+            const jsonData = await response.json();
             setData(jsonData); 
         } catch (error) {
             console.error('Error fetching data:', error);
