@@ -88,3 +88,7 @@ INSERT INTO transactions (user_id, merchant_name, merchant_group, deposit, amoun
 (1, 'Lyft', 'Transport', 0, 25.00, 'Pending'),
 (1, 'Netflix', 'Entertainment', 0, 10.00, 'Pending'),
 (1, 'Hulu', 'Entertainment', 0, 15.00, 'Pending');
+
+
+SELECT * FROM transactions WHERE user_id = 1
+        LIMIT 6;

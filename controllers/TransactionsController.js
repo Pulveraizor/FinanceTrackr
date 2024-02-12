@@ -8,5 +8,13 @@ module.exports = {
         } else {
             return false;
         }
+    },
+    getRecentTransactions: async function (req, res, user_id) {
+        const result = await TransactionsModel.getRecentTransactions(req.db, 1);
+        if (result) {
+            res.json(result);
+        } else {
+            return false;
+        }
     }
 }

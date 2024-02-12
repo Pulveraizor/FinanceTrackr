@@ -1,61 +1,7 @@
+import React, { useState, useEffect } from 'react';
+
 let current_balance = 1024.53;
 let current_user = "Benas";
-let transactions_list = [
-    {
-        id: 1,
-        merchant: "Circle-K",
-        amount: 12.96,
-        group: "Transportation",
-        deposit: false,
-        status: "Complete",
-        date: "2024-02-10"
-    },
-    {
-        id: 2,
-        merchant: "Maxima LT",
-        amount: 34.52,
-        group: "Groceries",
-        deposit: false,
-        status: "Pending",
-        date: "2024-02-05"
-    },
-    {
-        id: 3,
-        merchant: "Rory Pub",
-        amount: 7.80,
-        group: "Restaurants",
-        deposit: false,
-        status: "Complete",
-        date: "2024-02-07"
-    },
-    {
-        id: 4,
-        merchant: "Starbucks",
-        amount: 9.99,
-        group: "Groceries",
-        deposit: false,
-        status: "Pending",
-        date: "2024-01-30"
-    },
-    {
-        id: 5,
-        merchant: "AB Klaipedos Juru Muziejus",
-        amount: 15.00,
-        group: "Groceries",
-        deposit: false,
-        status: "Pending",
-        date: "2024-01-30"
-    },
-    {
-        id: 6,
-        merchant: "ATM Deposit",
-        amount: 50.00,
-        group: "Groceries",
-        deposit: true,
-        status: "Complete",
-        date: "2024-01-30"
-    }
-]
 
 export function GeneralInfo ({ balance, username }) {
     return (
@@ -83,12 +29,12 @@ export function SingleTransaction({transaction}) {
     )
 }
 
-function RecentTransactionsList() {
+function RecentTransactionsList({data}) {
     return (
         <div className="list-group card mt-4">
             <p className="text-center card-header">Recent transactions:</p>
 
-            {transactions_list.map((transaction) => (
+            {data.map((transaction) => (
                 <SingleTransaction 
                 key={transaction.id}
                 transaction={transaction} />
@@ -100,13 +46,36 @@ function RecentTransactionsList() {
 
 
 function Dashboard() {
+
+    const [data, setData] = useState([]);
+
+  // Make the API request when the component mounts
+    useEffect(() => {
+        const fetchData = async () => {
+        try {
+            const response = await fetch('http://localhost:5000/api/transactions/recent'); // replace '/api/data' with your API endpoint
+            if (!response.ok) {
+            throw new Error('Network response was not ok');
+            }
+            const jsonData = await response.json(); // Parse response as JSON
+            setData(jsonData); 
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+        };
+
+        fetchData();
+    }, []);
+
     return (
         <div className="container text-light card bg-transparent">
             <GeneralInfo 
                 balance={current_balance}
                 username={current_user}
             />
-            <RecentTransactionsList/>
+            <RecentTransactionsList
+                data={data}
+            />
         </div>
     )
 }
