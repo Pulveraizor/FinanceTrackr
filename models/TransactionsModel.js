@@ -16,5 +16,17 @@ module.exports = {
         } else {
             return false;
         }
+    },
+    depositTransaction: async function (db,data) {
+        const q = `INSERT INTO transactions 
+                (user_id, merchant_name, merchant_group, deposit, amount) 
+                VALUES (?, ?, ?, ?, ?)`;
+
+        const [result] = await db.query(q, data);
+        if (result) {
+            return result.insertId;
+        } else {
+            return false;
+        }
     }
 }

@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import RegisterForm from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import AllTransactions from "./pages/AllTransactions";
+import DepositForm from "./pages/Deposit";
 
 import {
   createBrowserRouter,
@@ -14,6 +15,7 @@ import {
   Route,
 } from "react-router-dom";
 
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -21,6 +23,7 @@ const router = createBrowserRouter(
       <Route path="/register" element={<RegisterForm />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/transactions" element={<AllTransactions />} />
+      <Route path="/deposit" element={<DepositForm />} />
     </>
   )
 );

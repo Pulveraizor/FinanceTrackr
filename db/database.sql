@@ -20,6 +20,19 @@ INSERT INTO users(username, password, email) VALUES
 ('admin', 'admin', 'admin@localhost'),
 ('user', 'user', 'user@localhost');
 
+DROP TABLE IF EXISTS users_balance;
+
+CREATE TABLE IF NOT EXISTS users_balance (
+    id INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    balance DECIMAL(10,2) NOT NULL DEFAULT "0.00",
+    PRIMARY KEY (id),
+    FOREIGN KEY(user_id) REFERENCES users(id)
+);
+
+INSERT INTO users_balance(user_id, balance) VALUES
+(1, 0.00);
+
 DROP TABLE IF EXISTS merchant_groups;
 
 CREATE TABLE IF NOT EXISTS merchant_groups (

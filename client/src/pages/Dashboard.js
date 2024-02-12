@@ -9,7 +9,10 @@ export function GeneralInfo ({ balance, username }) {
             <div className="card-body">
                 <h3>Hello {username}</h3>
                 <div><small>Current balance:</small></div>
-                <h1>{balance} EUR</h1>
+                <div className="d-flex justify-content-center align-items-center">
+                    <span className="btn btn-main-dark-blue mx-2">+</span>
+                    <h1>{balance} EUR</h1>
+                </div>
             </div>
             <div className="card-footer btn btn-main-dark-blue">Track your expenses</div>
         </div>

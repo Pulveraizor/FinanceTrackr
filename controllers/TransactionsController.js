@@ -16,5 +16,14 @@ module.exports = {
         } else {
             return false;
         }
+    },
+    depositTransaction: async function (req, res) {
+        console.log(req.body);
+        // const result = await TransactionsModel.depositTransaction(req.db, req.body);
+        // if (result) {
+        //     return result.insertId;
+        // } else {
+        //     return false;
+        // }
     }
 }
