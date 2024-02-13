@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS merchant_groups (
 );
 
 INSERT INTO merchant_groups(name) VALUES
+('Top up'),
 ('ATM'),
 ('Clothing'),
 ('Health'),

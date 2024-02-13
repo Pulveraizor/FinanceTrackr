@@ -21,11 +21,10 @@ module.exports = {
         try {
             let {amount} = req.body;
             const result = await TransactionsModel.depositTransaction(req.db, {amount});
-            res.redirect('/dashboard');
+            res.redirect('http://localhost:3000');
             console.log('Success');
         } catch (err) {
             console.log(err);
         }
-
     }
 }
