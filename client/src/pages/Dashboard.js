@@ -1,9 +1,28 @@
 import React, { useState, useEffect } from 'react';
 
-let current_balance = 1024.53;
 let current_user = "Benas";
 
-export function GeneralInfo ({ balance, username }) {
+export function GeneralInfo ({ username }) {
+
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+        try {
+            const response = await fetch('http://localhost:5000/api/transactions/balance');
+            if (!response.ok) {
+            throw new Error('Network response was not ok');
+            }
+            const jsonData = await response.json();
+            setData(jsonData); 
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+        };
+
+        fetchData();
+    }, []);
+
     return (
         <div className="text-center card mt-3">
             <div className="card-body">
@@ -11,7 +30,7 @@ export function GeneralInfo ({ balance, username }) {
                 <div><small>Current balance:</small></div>
                 <div className="d-flex justify-content-center align-items-center">
                     <a className="btn btn-main-dark-blue mx-2" href="/deposit">+</a>
-                    <h1>{balance} EUR</h1>
+                    <h1>{data} EUR</h1>
                 </div>
             </div>
             <div className="card-footer btn btn-main-dark-blue">Track your expenses</div>
@@ -32,26 +51,7 @@ export function SingleTransaction({transaction}) {
     )
 }
 
-function RecentTransactionsList({data}) {
-    return (
-        <div className="list-group card mt-4">
-            <div className="row text-center card-header justify-content-between">
-                <div className="col-4">Recent transactions:</div>
-                <div className="col-5"><a className="btn btn-main-dark-blue" href="/transactions">View all transactions</a></div>
-            </div>
-
-            {data.map((transaction) => (
-                <SingleTransaction 
-                key={transaction.id}
-                transaction={transaction} />
-            ))}
-
-        </div>
-    )
-}
-
-
-function Dashboard() {
+function RecentTransactionsList() {
 
     const [data, setData] = useState([]);
 
@@ -73,14 +73,30 @@ function Dashboard() {
     }, []);
 
     return (
+        <div className="list-group card mt-4">
+            <div className="row text-center card-header justify-content-between">
+                <div className="col-4">Recent transactions:</div>
+                <div className="col-5"><a className="btn btn-main-dark-blue" href="/transactions">View all transactions</a></div>
+            </div>
+
+            {data.map((transaction) => (
+                <SingleTransaction 
+                key={transaction.id}
+                transaction={transaction} />
+            ))}
+
+        </div>
+    )
+}
+
+
+function Dashboard() {
+
+    return (
         <div className="container text-light card bg-transparent">
-            <GeneralInfo 
-                balance={current_balance}
-                username={current_user}
+            <GeneralInfo username={current_user}
             />
-            <RecentTransactionsList
-                data={data}
-            />
+            <RecentTransactionsList />
         </div>
     )
 }
