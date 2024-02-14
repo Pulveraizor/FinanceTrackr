@@ -8,7 +8,7 @@ router.get('/transactions/recent', TransactionsController.getRecentTransactions)
 router.get('/transactions/balance', BalanceController.getBalance);
 router.get('/transactions/groups', TransactionsController.getGroups);
 
-router.post('/transactions/make', TransactionsController.makeTransaction);
+router.post('/transactions/withdraw', TransactionsController.withdrawTransaction);
 router.post('/transactions/deposit', TransactionsController.depositTransaction);
 
 module.exports = router;

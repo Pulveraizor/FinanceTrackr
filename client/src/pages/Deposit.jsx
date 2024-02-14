@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-function TransactionName() {
+export function TransactionName() {
     return(
         <div className="px-0">
             <label htmlFor="merchant_name" className="text-light form-label">Transaction name:</label>
@@ -9,7 +9,7 @@ function TransactionName() {
         </div>
     )
 }
-function MerchantGroup() {
+export function MerchantGroup() {
 
     const [group, setGroup] = useState([]);
 
@@ -30,7 +30,7 @@ function MerchantGroup() {
         </div>
     )
 }
-function Amount() {
+export function Amount() {
     return(
         <div className="px-0">
             <label htmlFor="amount" className="text-light form-label">Amount:</label>
@@ -42,7 +42,7 @@ function Amount() {
         
     )
 }
-function SubmitBtn() {
+export function SubmitBtn() {
     return(
         <div className="mt-3 px-0">
             <button type="submit" className="w-100 btn btn-main-dark-blue">Deposit</button>

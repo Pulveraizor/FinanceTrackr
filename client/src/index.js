@@ -7,6 +7,7 @@ import RegisterForm from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import AllTransactions from "./pages/AllTransactions";
 import DepositForm from "./pages/Deposit";
+import WithdrawalForm from "./pages/Withdrawal";
 
 import {
   createBrowserRouter,
@@ -26,6 +27,7 @@ const router = createBrowserRouter(
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/transactions" element={<AllTransactions />} />
       <Route path="/deposit" element={<DepositForm />} />
+      <Route path="/withdrawal" element={<WithdrawalForm />} />
     </>
   )
 );

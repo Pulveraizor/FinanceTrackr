@@ -43,5 +43,18 @@ module.exports = {
         } else {
             return false;
         }
+    },
+    withdrawTransaction: async function (db, data) {
+        const q = `INSERT INTO transactions 
+        (user_id, merchant_name, merchant_group, deposit, amount) 
+        VALUES (1, ?, ?, false, ?)`;
+
+        console.log(data);
+        const [result] = await db.query(q, [data.merchant_name, data.merchant_group, data.amount]);
+        if (result) {
+            return result.insertId;
+        } else {
+            return false;
+        }
     }
 }
