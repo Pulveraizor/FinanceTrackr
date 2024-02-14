@@ -1,5 +1,6 @@
 const UsersModel = require('../models/UsersModel');
 
+
 module.exports = {
     createUser: async function (req, res) {
         console.log('Inside User controller: ');
@@ -9,7 +10,7 @@ module.exports = {
         
         try {
             const result = await UsersModel.createUser(req.db, {email, username, password});
-            res.redirect('/dashboard');
+            res.redirect(global.react_dev_server + '/dashboard');
             console.log('Success');
         } catch (err) {
             console.log(err);
