@@ -25,7 +25,7 @@ module.exports = {
             const result = await TransactionsModel.depositTransaction(req.db, {merchant_name, merchant_group, amount });
             if (result) {
                 await BalanceController.updateBalance(req, res);
-                res.redirect('http://localhost:3000');
+                res.redirect(global.react_dev_server + '/dashboard');
                 console.log('Success');
             }
         } catch (err) {
@@ -38,7 +38,7 @@ module.exports = {
             const result = await TransactionsModel.withdrawTransaction(req.db, {merchant_name, merchant_group, amount});
             if (result) {
                 await BalanceController.updateBalance(req, res);
-                res.redirect('http://localhost:3000');
+                res.redirect(global.react_dev_server + '/dashboard');
                 console.log('Success');
             }
         } catch (err) {

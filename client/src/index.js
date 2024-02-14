@@ -18,7 +18,8 @@ import {
   Navigate
 } from "react-router-dom";
 
-export const api_path = "http://localhost:5000";
+// export const api_path = "http://localhost:5000";
+export const api_path = "";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
