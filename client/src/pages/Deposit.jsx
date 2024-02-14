@@ -15,7 +15,7 @@ export function MerchantGroup() {
     const [group, setGroup] = useState([]);
 
     useEffect(() => {
-        fetch(api_path + '/api/transactions/groups')
+        fetch(api_path + '/api/groups/all')
         .then(res => res.json())
         .then(data => setGroup(data))
     }, []);

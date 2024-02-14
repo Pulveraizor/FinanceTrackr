@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const session = require("express-session");
 const db = require("./db/mysql");
 const UsersRouter = require("./routes/UsersRouter");
-const TransactionsRouter = require("./routes/TransactionsRouter");
+const ApiRouter = require("./routes/ApiRouter");
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api", TransactionsRouter);
+app.use("/api", ApiRouter);
 app.use("/users", UsersRouter);
 
 app.use(
