@@ -16,9 +16,10 @@ module.exports = {
     createGroup: async function (req, res) {
         try{
             const new_group_name = req.body;
-            const result = await GroupsModel.createGroup(req.db, {name: req.body.name});
+            const result = await GroupsModel.createGroup(req.db, {name: req.body.new_group_name});
         if (result) {
-            res.json(result);
+            res.redirect('/groups');
+            console.log('Success');
         } else {
             return false;
         }
@@ -31,7 +32,8 @@ module.exports = {
             const group_id = req.body;
             const result = await GroupsModel.deleteGroup(req.db, {id: req.body.id});
         if (result) {
-            res.json(result);
+            res.redirect('/groups');
+            console.log('Success');
         } else {
             return false;
         }
