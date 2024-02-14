@@ -29,8 +29,9 @@ export function GeneralInfo ({ username }) {
                 <h3>Hello {username}</h3>
                 <div><small>Current balance:</small></div>
                 <div className="d-flex justify-content-center align-items-center">
-                    <a className="btn btn-main-dark-blue mx-2" href="/deposit">+</a>
+                    <a className="btn btn-main-dark-blue mx-2" href="/withdrawal">-</a>
                     <h1>{data} EUR</h1>
+                    <a className="btn btn-main-dark-blue mx-2" href="/deposit">+</a>
                 </div>
             </div>
             <div className="card-footer btn btn-main-dark-blue">Track your expenses</div>
