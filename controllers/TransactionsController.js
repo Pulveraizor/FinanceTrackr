@@ -1,4 +1,5 @@
 const TransactionsModel = require('../models/TransactionsModel');
+const BalanceModel = require('../models/BalanceModel');
 
 module.exports = {
     getAllUserTransactions: async function (req, res, user_id) {
@@ -22,6 +23,16 @@ module.exports = {
             let {amount} = req.body;
             const result = await TransactionsModel.depositTransaction(req.db, {amount});
             res.redirect('http://localhost:3000');
+            console.log('Success');
+        } catch (err) {
+            console.log(err);
+        }
+    },
+    makeTransaction: async function (req, res) {
+        try {
+            let { merchant_name, merchant_group, amount } = req.body;
+            const result = await TransactionsModel.makeTransaction(req.db, {merchant_name, merchant_group, amount});
+            res.redirect('http://localhost:3000/dashboard');
             console.log('Success');
         } catch (err) {
             console.log(err);
