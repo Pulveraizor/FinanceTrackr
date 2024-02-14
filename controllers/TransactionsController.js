@@ -18,6 +18,19 @@ module.exports = {
             return false;
         }
     },
+    getGroups: async function (req, res) {
+        try{
+        const result = await TransactionsModel.getGroups(req.db);
+        if (result) {
+            res.json(result);
+        } else {
+            return false;
+        }
+        } catch (err) {
+            console.log(err);
+        }
+       
+    },
     depositTransaction: async function (req, res) {
         try {
             let {amount} = req.body;

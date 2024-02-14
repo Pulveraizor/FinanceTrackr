@@ -45,23 +45,13 @@ function TransactionsList({data}) {
 function AllTransactions() {
 
     const [data, setData] = useState([]);
-    
-    useEffect(() => {
-        const fetchData = async () => {
-        try {
-            const response = await fetch('http://localhost:5000/api/transactions/all');
-            if (!response.ok) {
-            throw new Error('Network response was not ok');
-            }
-            const jsonData = await response.json();
-            setData(jsonData); 
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-        };
 
-        fetchData();
+    useEffect(() => {
+        fetch('http://localhost:5000/api/transactions/all')
+        .then(res => res.json())
+        .then(data => setData(data))
     }, []);
+
     return(
         <div className="container text-light card bg-transparent">
             <GeneralInfo/>

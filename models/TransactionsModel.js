@@ -22,6 +22,15 @@ module.exports = {
             return false;
         }
     },
+    getGroups: async function (db) {
+        const q = `SELECT * FROM merchant_groups`;
+        const [result] = await db.query(q);
+        if (result) {
+            return result;
+        } else {
+            return false;
+        }
+    },
     depositTransaction: async function (db, data) {
         const q = `INSERT INTO transactions 
         (user_id, merchant_name, merchant_group, deposit, amount) 

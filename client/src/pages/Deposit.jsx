@@ -1,4 +1,4 @@
-// import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 function TransactionName() {
@@ -10,14 +10,22 @@ function TransactionName() {
     )
 }
 function MerchantGroup() {
+
+    const [group, setGroup] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/api/transactions/groups')
+        .then(res => res.json())
+        .then(data => setGroup(data))
+    }, []);
+
     return(
         <div className="mb-3 px-0">
             <label htmlFor="group" className="text-light form-label">Merchant group:</label>
             <select className="form-select" id="group" name="merchant_group">
-                <option selected>Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                {group.map((group) => (
+                    <option key={group.id} value={group.id}>{group.name}</option>
+                ))}
             </select>
         </div>
     )
