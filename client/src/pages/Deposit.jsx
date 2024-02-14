@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {api_path} from '../index';
 
 
 export function TransactionName() {
@@ -14,7 +15,7 @@ export function MerchantGroup() {
     const [group, setGroup] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/transactions/groups')
+        fetch(api_path + '/api/transactions/groups')
         .then(res => res.json())
         .then(data => setGroup(data))
     }, []);
@@ -53,7 +54,7 @@ function DepositForm() {
     return (
         <div className="h-75 d-flex align-items-center justify-content-center bg-transparent">
             
-            <form className="" action="http://localhost:5000/api/transactions/deposit" method="post">
+            <form className="" action={api_path + "/api/transactions/deposit"} method="post">
                 <div className="row">
                     <div className="text-light">
                     <h1>Add funds:</h1>

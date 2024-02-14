@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { api_path } from '../index';
 
 let current_user = "Benas";
 
@@ -7,20 +8,9 @@ export function GeneralInfo ({ username }) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-        try {
-            const response = await fetch('http://localhost:5000/api/transactions/balance');
-            if (!response.ok) {
-            throw new Error('Network response was not ok');
-            }
-            const jsonData = await response.json();
-            setData(jsonData); 
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-        };
-
-        fetchData();
+        fetch(api_path + '/api/transactions/balance')
+        .then(res => res.json())
+        .then(data => setData(data))
     }, []);
 
     return (
@@ -57,20 +47,9 @@ function RecentTransactionsList() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-        try {
-            const response = await fetch('http://localhost:5000/api/transactions/recent');
-            if (!response.ok) {
-            throw new Error('Network response was not ok');
-            }
-            const jsonData = await response.json();
-            setData(jsonData); 
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-        };
-
-        fetchData();
+        fetch(api_path + '/api/transactions/recent')
+        .then(res => res.json())
+        .then(data => setData(data))
     }, []);
 
     return (

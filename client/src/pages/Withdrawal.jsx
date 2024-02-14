@@ -1,11 +1,12 @@
 import { TransactionName, MerchantGroup, Amount, SubmitBtn } from './Deposit';
+import { api_path } from '../index';
 
 
 function WithdrawalForm() {
     return (
         <div className="h-75 d-flex align-items-center justify-content-center bg-transparent">
             
-            <form className="" action="http://localhost:5000/api/transactions/withdraw" method="post">
+            <form className="" action={api_path + "/api/transactions/withdraw"} method="post">
                 <div className="row">
                     <div className="text-light">
                     <h1>Withdraw funds:</h1>

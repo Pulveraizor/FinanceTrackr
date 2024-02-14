@@ -1,6 +1,7 @@
 import { GeneralInfo } from "./Dashboard";
 import { SingleTransaction } from "./Dashboard";
 import React, { useState, useEffect } from 'react';
+import { api_path } from '../index';
 
 function FilterOptions () {
     return(
@@ -47,7 +48,7 @@ function AllTransactions() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/transactions/all')
+        fetch(api_path + '/api/transactions/all')
         .then(res => res.json())
         .then(data => setData(data))
     }, []);

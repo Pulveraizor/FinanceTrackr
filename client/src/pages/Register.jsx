@@ -1,4 +1,5 @@
 import { Logo } from "./Login";
+import { api_path } from '../index';
 
 
 export function EnterEmail() {
@@ -51,7 +52,7 @@ export function RegisterBtn() {
 
 function RegisterForm() {
     return (
-        <form className="row justify-content-center needs-validation" action="http://localhost:5000/users/register" method="post">
+        <form className="row justify-content-center needs-validation" action={api_path + "/users/register"} method="post">
             <div className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 col-xxl-3 card bg-transparent border-0 p-5">
                 <>
                     <Logo />
