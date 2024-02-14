@@ -33,8 +33,9 @@ module.exports = {
     },
     depositTransaction: async function (req, res) {
         try {
-            let {amount} = req.body;
-            const result = await TransactionsModel.depositTransaction(req.db, {amount});
+            let {merchant_name, merchant_group, amount} = req.body;
+            merchant_group = Number(merchant_group);
+            const result = await TransactionsModel.depositTransaction(req.db, {merchant_name, merchant_group, amount });
             res.redirect('http://localhost:3000');
             console.log('Success');
         } catch (err) {

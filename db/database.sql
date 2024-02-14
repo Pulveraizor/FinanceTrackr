@@ -64,24 +64,24 @@ CREATE TABLE IF NOT EXISTS transactions(
     id INT NOT NULL AUTO_INCREMENT,
     user_id INT NOT NULL,
     merchant_name VARCHAR(255) NOT NULL,
-    merchant_group VARCHAR(45) NOT NULL,
+    merchant_group INT NOT NULL,
     deposit BOOLEAN NOT NULL DEFAULT FALSE,
     amount DECIMAL(10,2) NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (merchant_group) REFERENCES merchant_groups(name)
+    FOREIGN KEY (merchant_group) REFERENCES merchant_groups(id)
 );
 
 INSERT INTO transactions (user_id, merchant_name, merchant_group, deposit, amount) VALUES
-(1, 'Amazon', 'Shopping', 0, 100.00),
-(1, 'Starbucks', 'Restaurants', 0, 50.00),
-(1, 'Walmart', 'Shopping', 0, 75.00),
-(1, 'Target', 'Shopping', 0,  25.00),
-(1, 'SEB', 'ATM', 1, 100.00),
-(1, 'CVS', 'Health', 0, 75.00),
-(1, 'Walgreens', 'Health', 0, 100.00),
-(1, 'Uber', 'Transport', 0, 50.00),
-(1, 'Lyft', 'Transport', 0, 25.00),
-(1, 'Netflix', 'Entertainment', 0, 10.00),
-(1, 'Hulu', 'Entertainment', 0, 15.00);
+(1, 'Amazon', 3, 0, 100.00),
+(1, 'Starbucks', 5, 0, 50.00),
+(1, 'Walmart', 7, 0, 75.00),
+(1, 'Target', 7, 0,  25.00),
+(1, 'SEB', 1, 1, 100.00),
+(1, 'CVS', 4, 0, 75.00),
+(1, 'Walgreens', 4, 0, 100.00),
+(1, 'Uber', 10, 0, 50.00),
+(1, 'Lyft', 10, 0, 25.00),
+(1, 'Netflix', 11, 0, 10.00),
+(1, 'Hulu', 11, 0, 15.00);

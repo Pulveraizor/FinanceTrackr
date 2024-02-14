@@ -34,10 +34,10 @@ module.exports = {
     depositTransaction: async function (db, data) {
         const q = `INSERT INTO transactions 
         (user_id, merchant_name, merchant_group, deposit, amount) 
-        VALUES (1, 'User Top Up', 'Top up', true, ?)`;
+        VALUES (1, ?, ?, true, ?)`;
 
         console.log(data);
-        const [result] = await db.query(q, data.amount);
+        const [result] = await db.query(q, [data.merchant_name, data.merchant_group, data.amount]);
         if (result) {
             return result.insertId;
         } else {

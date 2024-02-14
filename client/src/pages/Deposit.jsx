@@ -58,10 +58,10 @@ function DepositForm() {
                     <div className="text-light">
                     <h1>Add funds:</h1>
                         <div className="row input-group has-validation mt-3 mx-0">
-                            <TransactionName />
-                            <MerchantGroup />
+                            <TransactionName/>
+                            <MerchantGroup/>
                             <Amount />
-                            <SubmitBtn  />
+                            <SubmitBtn />
                         </div>
                     </div>
                 </div>
