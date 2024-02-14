@@ -16,11 +16,11 @@ function CreateNewGroup() {
 function SingleGroup({ single_group_data }) {
 
     return (
-        <li class="list-group-item d-flex align-items-center">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">{single_group_data.name}</div>
+        <li className="list-group-item d-flex align-items-center">
+            <div className="ms-2 me-auto">
+                <div className="fw-bold">{single_group_data.name}</div>
             </div>
-            <span class="btn text-light btn-main-dark-blue">Delete</span>
+            <span className="btn text-light btn-main-dark-blue">Delete</span>
         </li>
     );
 }
@@ -38,7 +38,7 @@ function GroupsList() {
 
     return (
         <div className="card">
-            <ul class="list-group">
+            <ul className="list-group">
             {groups.map((group) => (
                 <SingleGroup
                 key={group.id}

@@ -18,7 +18,7 @@ module.exports = {
             const new_group_name = req.body;
             const result = await GroupsModel.createGroup(req.db, {name: req.body.new_group_name});
         if (result) {
-            res.redirect('/groups');
+            res.redirect(global.react_dev_server + '/groups');
             console.log('Success');
         } else {
             return false;
@@ -32,7 +32,7 @@ module.exports = {
             const group_id = req.body;
             const result = await GroupsModel.deleteGroup(req.db, {id: req.body.id});
         if (result) {
-            res.redirect('/groups');
+            res.redirect(global.react_dev_server + '/groups');
             console.log('Success');
         } else {
             return false;
