@@ -49,8 +49,11 @@ module.exports = {
         try {
             let { merchant_name, merchant_group, amount } = req.body;
             const result = await TransactionsModel.withdrawTransaction(req.db, {merchant_name, merchant_group, amount});
-            res.redirect('http://localhost:3000/dashboard');
-            console.log('Success');
+            if (result) {
+                await BalanceController.updateBalance(req, res);
+                res.redirect('http://localhost:3000');
+                console.log('Success');
+            }
         } catch (err) {
             console.log(err);
         }

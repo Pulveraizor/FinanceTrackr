@@ -44,7 +44,7 @@ export function SingleTransaction({transaction}) {
         <a href="/#" className="list-group-item list-group-item-action" aria-current="true">
             <div className="d-flex w-100 justify-content-between">
                 <h5 className="mb-1">{transaction.merchant_name}</h5>
-                <span>{transaction.deposit ? "+" : "-"}{transaction.amount} EUR</span>
+                <span className={transaction.deposit ? 'text-success' : 'text-danger'}>{transaction.deposit ? "+" : "-"}{transaction.amount} EUR</span>
             </div>
             <p className="mb-1">{transaction.transaction_status}</p>
             <small>{transaction.created_at}</small>
