@@ -22,6 +22,28 @@ module.exports = {
             return false;
         }
     },
+    getAllDeposits: async function (db) {
+        const q = `SELECT SUM(amount) as all_deposits FROM transactions 
+        WHERE user_id = 1
+        AND deposit = true`;
+        const [result] = await db.query(q);
+        if (result) {
+            return result;
+        } else {
+            return false;
+        }
+    },
+    getAllWithdrawals: async function (db) {
+        const q = `SELECT SUM(amount) as all_withdrawals FROM transactions 
+        WHERE user_id = 1
+        AND deposit = false`;
+        const [result] = await db.query(q);
+        if (result) {
+            return result;
+        } else {
+            return false;
+        }
+    },
     getGroups: async function (db) {
         const q = `SELECT * FROM merchant_groups`;
         const [result] = await db.query(q);
