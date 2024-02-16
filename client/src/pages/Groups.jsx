@@ -3,13 +3,17 @@ import { api_path } from '../index';
 
 function CreateNewGroup() {
     return (
-        <form action={api_path + '/api/groups/create'} method="post">
-            <div className="list-group-item d-flex align-items-center px-0">
-                <label htmlFor="new_group_name" className="text-light form-label text-nowrap">New group:</label>
-                <input type="text" id="new_group_name" name="new_group_name" className="form-control" required placeholder="Enter group name"></input>
-                <button className="btn text-light btn-main-dark-blue" type="submit">Create</button>
-            </div>
-        </form>
+        <div className="container pb-5 px-0">
+            <form className="" action={api_path + '/api/groups/create'} method="post">
+                <div className="list-group-item d-flex flex-column px-0">
+                    <label htmlFor="new_group_name" className="text-light form-label text-nowrap">New group:</label>
+                    <div className="input-group d-flex">
+                        <input type="text" id="new_group_name" name="new_group_name" className="form-control" required placeholder="Enter group name"></input>
+                        <button className="btn text-light btn-main-dark-blue" type="submit">Create</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     )
 }
 
@@ -37,7 +41,7 @@ function GroupsList() {
     }, []);
 
     return (
-        <div className="card">
+        <div className="container bg-transparent px-0">
             <ul className="list-group">
             {groups.map((group) => (
                 <SingleGroup
@@ -51,9 +55,11 @@ function GroupsList() {
 
 function GroupsManager() {
     return (
-        <div className="container">
-            <CreateNewGroup />
-            <GroupsList />
+        <div className="cointainer h-100">
+            <div className="h-100 d-flex flex-column justify-content-center ">
+                <CreateNewGroup />
+                <GroupsList />
+            </div>
         </div>
     );
 }
