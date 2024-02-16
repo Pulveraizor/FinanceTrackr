@@ -24,7 +24,7 @@ export function GeneralInfo ({ username }) {
                     <a className="btn btn-main-dark-blue mx-2" href="/deposit">+</a>
                 </div>
             </div>
-            <div className="card-footer btn btn-main-dark-blue">Track your expenses</div>
+            <a href="/tracker" className="card-footer btn btn-main-dark-blue">Track your expenses</a>
         </div>
     )
 }

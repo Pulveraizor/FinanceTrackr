@@ -11,12 +11,32 @@ module.exports = {
             return false;
         }
     },
-    getRecentTransactions: async function (req, res, user_id) {
-        const result = await TransactionsModel.getRecentTransactions(req.db, 1);
+    getAllWithdrawals: async function (req, res) {
+        const result = await TransactionsModel.getAllWithdrawals(req.db, 1);
         if (result) {
             res.json(result);
         } else {
             return false;
+        }
+    },
+    getAllWithdrawalsSum: async function (req, res) {
+        const result = await TransactionsModel.getAllWithdrawalsSum(req.db);
+        if (result) {
+            res.json(result);
+        } else {
+            return false;
+        }
+    },
+    getRecentTransactions: async function (req, res, user_id) {
+        try {
+            const result = await TransactionsModel.getRecentTransactions(req.db, 1);
+        if (result) {
+            res.json(result);
+        } else {
+            return false;
+        }
+        } catch (err) {
+            console.log(err);
         }
     },
     depositTransaction: async function (req, res) {

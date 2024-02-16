@@ -10,6 +10,18 @@ module.exports = {
             return false;
         }
     },
+    getAllWithdrawals: async function (db, user_id) {
+        const q = `SELECT * FROM transactions 
+        WHERE user_id = ?
+        AND deposit = false
+        ORDER BY created_at DESC`;
+        const [result] = await db.query(q, user_id);
+        if (result) {
+            return result;
+        } else {
+            return false;
+        }
+    },
     getRecentTransactions: async function (db, user_id) {
         const q = `SELECT * FROM transactions
         WHERE user_id = ?
@@ -22,7 +34,7 @@ module.exports = {
             return false;
         }
     },
-    getAllDeposits: async function (db) {
+    getAllDepositsSum: async function (db) {
         const q = `SELECT SUM(amount) as all_deposits FROM transactions 
         WHERE user_id = 1
         AND deposit = true`;
@@ -33,7 +45,7 @@ module.exports = {
             return false;
         }
     },
-    getAllWithdrawals: async function (db) {
+    getAllWithdrawalsSum: async function (db) {
         const q = `SELECT SUM(amount) as all_withdrawals FROM transactions 
         WHERE user_id = 1
         AND deposit = false`;

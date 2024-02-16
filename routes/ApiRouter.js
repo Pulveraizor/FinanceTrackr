@@ -5,6 +5,8 @@ const BalanceController = require("../controllers/BalanceController");
 const GroupsController = require("../controllers/GroupsController");
 
 router.get('/transactions/all', TransactionsController.getAllUserTransactions);
+router.get('/transactions/withdrawals', TransactionsController.getAllWithdrawals);
+router.get('/transactions/withdrawals/sum', TransactionsController.getAllWithdrawalsSum);
 router.get('/transactions/recent', TransactionsController.getRecentTransactions);
 router.get('/transactions/balance', BalanceController.getBalance);
 router.post('/transactions/withdraw', TransactionsController.withdrawTransaction);

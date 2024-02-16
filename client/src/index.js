@@ -9,6 +9,7 @@ import AllTransactions from "./pages/AllTransactions";
 import DepositForm from "./pages/Deposit";
 import WithdrawalForm from "./pages/Withdrawal";
 import GroupsManager from "./pages/Groups";
+import TrackerPage from "./pages/Tracker";
 
 import {
   createBrowserRouter,
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
       <Route path="/deposit" element={<DepositForm />} />
       <Route path="/withdrawal" element={<WithdrawalForm />} />
       <Route path="/groups" element={<GroupsManager />} />
+      <Route path="/tracker" element={<TrackerPage />} />
     </>
   )
 );
