@@ -13,6 +13,10 @@ export function GeneralInfo ({ username }) {
         .then(data => setData(data))
     }, []);
 
+    let dash_link = window.location.pathname === "/dashboard" ? "/tracker" : "/dashboard";
+    let dash_link_text = window.location.pathname === "/dashboard" ? "Track your expenses" : "Back to Dashboard";
+    let group_manage_btn = <a href="/groups" className=" btn btn-main-dark-blue mt-1">Manage groups</a>;
+
     return (
         <div className="text-center card mt-3">
             <div className="card-body">
@@ -24,7 +28,8 @@ export function GeneralInfo ({ username }) {
                     <a className="btn btn-main-dark-blue mx-2" href="/deposit">+</a>
                 </div>
             </div>
-            <a href="/tracker" className="card-footer btn btn-main-dark-blue">Track your expenses</a>
+            <a href={dash_link} className="card-footer btn btn-main-dark-blue">{dash_link_text}</a>
+            {window.location.pathname === "/tracker"  ? group_manage_btn : window.location.pathname === "/transactions" ? group_manage_btn : null}
         </div>
     )
 }

@@ -4,33 +4,47 @@ const BalanceController = require('../controllers/BalanceController');
 
 module.exports = {
     getAllUserTransactions: async function (req, res, user_id) {
-        const result = await TransactionsModel.getAllUserTransactions(req.db, 1);
+        try {
+            const result = await TransactionsModel.getAllUserTransactions(req.db, 1);
         if (result) {
+            await BalanceController.updateBalance(req, res);
             res.json(result);
         } else {
             return false;
+        }
+        } catch (err) {
+            console.log(err);
         }
     },
     getAllWithdrawals: async function (req, res) {
-        const result = await TransactionsModel.getAllWithdrawals(req.db, 1);
+        try {
+            const result = await TransactionsModel.getAllWithdrawals(req.db, 1);
         if (result) {
             res.json(result);
         } else {
             return false;
         }
+        } catch(err) {
+            console.log(err);
+        }
     },
     getAllWithdrawalsSum: async function (req, res) {
-        const result = await TransactionsModel.getAllWithdrawalsSum(req.db);
+        try {
+            const result = await TransactionsModel.getAllWithdrawalsSum(req.db);
         if (result) {
             res.json(result);
         } else {
             return false;
+        }
+        } catch (err) {
+            console.log(err);
         }
     },
     getRecentTransactions: async function (req, res, user_id) {
         try {
             const result = await TransactionsModel.getRecentTransactions(req.db, 1);
         if (result) {
+            await BalanceController.updateBalance(req, res);
             res.json(result);
         } else {
             return false;

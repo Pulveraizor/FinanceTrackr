@@ -74,11 +74,11 @@ CREATE TABLE IF NOT EXISTS transactions(
 );
 
 INSERT INTO transactions (user_id, merchant_name, merchant_group, deposit, amount) VALUES
+(1, 'SEB', 1, 1, 1000.00),
 (1, 'Amazon', 3, 0, 100.00),
 (1, 'Starbucks', 5, 0, 50.00),
 (1, 'Walmart', 7, 0, 75.00),
 (1, 'Target', 7, 0,  25.00),
-(1, 'SEB', 1, 1, 100.00),
 (1, 'CVS', 4, 0, 75.00),
 (1, 'Walgreens', 4, 0, 100.00),
 (1, 'Uber', 10, 0, 50.00),

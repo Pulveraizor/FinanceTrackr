@@ -3,8 +3,6 @@ const UsersModel = require('../models/UsersModel');
 
 module.exports = {
     createUser: async function (req, res) {
-        console.log('Inside User controller: ');
-        console.log(req.body);
 
         let {email, username, password, password_repeat} = req.body;
         

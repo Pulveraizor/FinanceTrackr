@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { api_path } from '../index';
 
+export function BackBtn({destination}) {
+    return (
+        <div className="container px-0 mb-3">
+            <a href={destination} className="btn btn-main-dark-blue"> ← Back</a>
+        </div>
+    )
+}
 function CreateNewGroup() {
     return (
         <div className="container pb-5 px-0">
@@ -63,6 +70,7 @@ function GroupsManager() {
     return (
         <div className="cointainer h-100">
             <div className="h-100 d-flex flex-column justify-content-center ">
+                <BackBtn destination={"/tracker"}/>
                 <CreateNewGroup />
                 <GroupsList />
             </div>

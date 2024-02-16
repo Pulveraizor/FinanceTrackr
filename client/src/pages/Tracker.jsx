@@ -22,13 +22,14 @@ function getGroupName(group_array) {
     return group_name_object;
 }
 
-function SingleStat({percentage, group_name, color}) {
+function SingleStat({percentage, group_name, color, total_sum}) {
     return (
         <div className="d-flex">
             <label className="fw-semibold w-25 mx-2">{group_name}:</label>
             <div className="w-100 m-2 progress" role="progressbar" aria-valuenow={percentage} aria-valuemin="0" aria-valuemax="100">
-                <div className={"progress-bar bg-" + color} style={{ width: `${percentage}%` }}>{percentage}%</div>
+                <div className={"text-dark progress-bar bg-" + color} style={{ width: `${percentage}%` }}>{percentage}%</div>
             </div>
+            <div className="w-25">{total_sum} EUR</div>
         </div>
     )
 }
@@ -76,8 +77,8 @@ function Stats() {
                                 key={group} 
                                 percentage={percentage_rounded} 
                                 group_name={indexedGroupNames[group_name_index]} 
-                                color={colors[ index <= colors.length ? index : index - colors.length ]}/>
-                    
+                                color={colors[ index <= colors.length ? index : index - colors.length ]}
+                                total_sum={group_sum} />
                         }                    
                     )
                 }

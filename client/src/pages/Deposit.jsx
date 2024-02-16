@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {api_path} from '../index';
+import { BackBtn } from './Groups';
 
 
 export function TransactionName() {
@@ -43,10 +44,10 @@ export function Amount() {
         
     )
 }
-export function SubmitBtn() {
+export function SubmitBtn({name}) {
     return(
         <div className="mt-3 px-0">
-            <button type="submit" className="w-100 btn btn-main-dark-blue">Deposit</button>
+            <button type="submit" className="w-100 btn btn-main-dark-blue">{name}</button>
         </div>
     )
 }
@@ -54,15 +55,17 @@ function DepositForm() {
     return (
         <div className="h-75 d-flex align-items-center justify-content-center bg-transparent">
             
-            <form className="" action={api_path + "/api/transactions/deposit"} method="post">
+            <form action={api_path + "/api/transactions/deposit"} method="post">
                 <div className="row">
                     <div className="text-light">
+                    <BackBtn destination={"/dashboard"}/>
                     <h1>Add funds:</h1>
                         <div className="row input-group has-validation mt-3 mx-0">
+                            
                             <TransactionName/>
                             <MerchantGroup/>
                             <Amount />
-                            <SubmitBtn />
+                            <SubmitBtn name={"Deposit"}/>
                         </div>
                     </div>
                 </div>
