@@ -17,15 +17,19 @@ function CreateNewGroup() {
     )
 }
 
-function SingleGroup({ single_group_data }) {
+function SingleGroup({ single_group_data, delete_btn_id }) {
 
     return (
-        <li className="list-group-item d-flex align-items-center">
+        <form className="list-group-item d-flex align-items-center" action={api_path + '/api/groups/delete'} method="post">
             <div className="ms-2 me-auto">
                 <div className="fw-bold">{single_group_data.name}</div>
             </div>
-            <span className="btn text-light btn-main-dark-blue">Delete</span>
-        </li>
+            <div>
+                <input type="hidden" name="id" value={delete_btn_id} />
+                <button type="submit" className="btn text-light btn-main-dark-blue">Delete</button>
+            </div>
+        </form>
+
     );
 }
 function GroupsList() {
@@ -46,7 +50,9 @@ function GroupsList() {
             {groups.map((group) => (
                 <SingleGroup
                 key={group.id}
-                single_group_data={group}/>
+                single_group_data={group}
+                delete_btn_id={group.id}
+                />
             ))}
             </ul>
         </div>

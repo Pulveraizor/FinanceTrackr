@@ -18,6 +18,7 @@ module.exports = {
         }
     },
     deleteGroup: async function (db, data) {
+        console.log(data);
         const q = `DELETE FROM merchant_groups WHERE id = ?`;
         const [result] = await db.query(q, [data.id]);
         if (result) {
