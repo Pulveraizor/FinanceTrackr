@@ -68,7 +68,7 @@ function GroupsList() {
 
 function GroupsManager() {
     return (
-        <div className="cointainer h-100">
+        <div className="cointainer-sm h-100 mx-2">
             <div className="h-100 d-flex flex-column justify-content-center ">
                 <BackBtn destination={"/tracker"}/>
                 <CreateNewGroup />

@@ -21,3 +21,10 @@ height: 100%;
     background-color: var(--dark-blue);
     color: var(--white);
 }
+.h-90 {
+    height: 90%;
+}
+.scroll-bar-main {
+    scrollbar-width: thin;
+    scrollbar-color: var(--dark-blue) var(--white);
+}

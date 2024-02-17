@@ -30,7 +30,7 @@ function TransactionsList({data}) {
         return <p>No data available</p>;
     }
     return (
-        <div className="list-group card mt-4">
+        <div className="overflow-auto scroll-bar-main list-group card mt-4">
             <p className="text-center card-header">All Transactions</p>
 
             {data.map((transaction) => (
@@ -54,7 +54,7 @@ function AllTransactions() {
     }, []);
 
     return(
-        <div className="container text-light card bg-transparent">
+        <div className="h-90 container-sm text-light card bg-transparent">
             <GeneralInfo/>
             <FilterOptions/>
             <TransactionsList

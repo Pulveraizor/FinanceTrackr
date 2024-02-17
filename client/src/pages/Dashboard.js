@@ -78,7 +78,7 @@ function RecentTransactionsList() {
 function Dashboard() {
 
     return (
-        <div className="container text-light card bg-transparent">
+        <div className="container-sm text-light card bg-transparent">
             <GeneralInfo username={current_user}
             />
             <RecentTransactionsList />

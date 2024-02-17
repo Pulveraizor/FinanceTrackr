@@ -4,7 +4,7 @@ import { BackBtn } from './Groups';
 
 function WithdrawalForm() {
     return (
-        <div className="h-75 d-flex align-items-center justify-content-center bg-transparent">
+        <div className="container-sm h-75 d-flex align-items-center justify-content-center bg-transparent">
             
             <form action={api_path + "/api/transactions/withdraw"} method="post">
                 <div className="row">
