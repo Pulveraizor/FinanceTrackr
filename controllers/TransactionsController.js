@@ -1,6 +1,6 @@
 const TransactionsModel = require('../models/TransactionsModel');
 const BalanceModel = require('../models/BalanceModel');
-const BalanceController = require('./balanceController');
+const BalanceController = require('./BalanceController');
 
 module.exports = {
     getAllUserTransactions: async function (req, res, user_id) {
