@@ -10,8 +10,8 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 
-global.react_dev_server = "http://localhost:3000";
-// global.react_dev_server = "";
+// global.react_dev_server = "http://localhost:3000";
+global.react_dev_server = "";
 
 
 app.use(function (req, res, next) {

@@ -36,7 +36,7 @@ export function Amount() {
     return(
         <div className="px-0">
             <label htmlFor="amount" className="text-light form-label">Amount:</label>
-            <input type="number" id="amount" name="amount" className="form-control" required></input>
+            <input type="number" id="amount" name="amount" className="form-control" step="0.01" required></input>
             <div className="invalid-feedback col-12">
                 Please enter a valid amount
             </div>
